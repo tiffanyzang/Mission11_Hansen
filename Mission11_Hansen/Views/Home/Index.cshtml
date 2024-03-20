@@ -14,18 +14,7 @@
     <div class="row mb-4">
         @foreach (Book b in Model.Books)
         {
-            <div class="card col-lg-4 align-content-center" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">@b.Title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@b.Author</h6>
-                    <h6 class="card-text">Publisher: @b.Publisher</h6>
-                    <h6 class="card-text">ISBN: @b.ISBN</h6>
-                    <h6 class="card-text">Classification: @b.Classification</h6>
-                    <h6 class="card-text">Category: @b.Category</h6>
-                    <h6 class="card-text">Number of Pages: @b.PageCount</h6>
-                    <h6 class="card-text">Price: $@b.Price</h6>
-                </div>
-            </div>
+            <partial name="BookSummary" model="b"/>
         }
     </div>
 </div>
