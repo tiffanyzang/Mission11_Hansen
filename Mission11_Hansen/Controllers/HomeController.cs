@@ -17,24 +17,26 @@ namespace Mission11_Hansen.Controllers
             _repo = temp;
         }
 
-        public IActionResult Index(int pageNum)
+        public IActionResult Index(int pageNum, string? bookType)
         {
             var pageSize = 10;
 
             var bookData = new BooksListViewModel
             {
                 Books = _repo.Books
+                    .Where(x => x.Category == bookType || bookType == null)
                     .OrderBy(x => x.Title)
-                    .Skip((pageNum-1) *pageSize)
+                    .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize),
 
                 PaginationInfo = new PaginationInfo
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = pageSize,
-                    TotalItems = _repo.Books.Count(),
-                }
+                    TotalItems = bookType == null ? _repo.Books.Count() : _repo.Books.Where(x => x.Category == bookType).Count()
+                },
 
+                CurrentBookType = bookType
 
             };
 

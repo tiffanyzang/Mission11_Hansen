@@ -9,15 +9,20 @@
     <link rel="stylesheet" href="~/Mission11_Hansen.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <div class="bg-black text-white p-2">
-            <span class="navbar-brand m-lg-2">AMAZON - BOOKLIST</span>
+    <div class="bg-black text-white p-2">
+        <span class="navbar-brand m-lg-2">AMAZON - BOOKLIST</span>
+    </div>
+    <div class="row m-1 p-1">
+        <div class="col-3">
+            <vc:book-types/>
         </div>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+        <div class="container col-9">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
     </div>
 
     <footer class="border-top footer text-muted">
